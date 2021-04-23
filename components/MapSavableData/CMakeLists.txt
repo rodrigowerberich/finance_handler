@@ -1,0 +1,18 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+
+
+ADD_LIBRARY(MapSavableData 
+    INTERFACE
+)
+
+TARGET_INCLUDE_DIRECTORIES(MapSavableData
+    INTERFACE
+        inc
+)
+
+TARGET_LINK_LIBRARIES(MapSavableData 
+    INTERFACE 
+        Optionals
+)
+
+ADD_SUBDIRECTORY(tst)
