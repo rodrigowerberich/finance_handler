@@ -2,10 +2,10 @@
 
 #include "Optional.hh"
 
-namespace Optional{
+namespace opt{
 
 template <typename ValueType>
-class OptionalBasicType : public OptionalI{
+class OptionalBasicType : public Optional{
 public:
     OptionalBasicType();
     OptionalBasicType(ValueType value);

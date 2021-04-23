@@ -4,26 +4,26 @@
 #include "OptDouble.hh"
 
 TEST(OptDouble, EmptyContructor) {
-    testEmptyContruction<Optional::OptDouble>();
+    testEmptyContruction<opt::OptDouble>();
 }
 
 TEST(OptDouble, NonEmptyContructorValidity) {
-    testNonEmptyContructorValidity<Optional::OptDouble>(0.3);
+    testNonEmptyContructorValidity<opt::OptDouble>(0.3);
 }
 
 TEST(OptDouble, NonEmptyContructorValue) {
-    testNonEmptyContructorValue<Optional::OptDouble>(1000.45);
+    testNonEmptyContructorValue<opt::OptDouble>(1000.45);
 }
 
 TEST(OptDouble, SettingValueValidity) {
-    testSettingValueValidity<Optional::OptDouble>(-375.15);
+    testSettingValueValidity<opt::OptDouble>(-375.15);
 }
 
 TEST(OptDouble, SettingValue) {
-    testSettingValue<Optional::OptDouble>(-1521.001);
+    testSettingValue<opt::OptDouble>(-1521.001);
 }
 
 TEST(OptDouble, Invalidate) {
-    testInvalidate<Optional::OptDouble>(0.10);
+    testInvalidate<opt::OptDouble>(0.10);
 }
 

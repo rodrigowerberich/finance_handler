@@ -4,45 +4,45 @@
 #include "OptString.hh"
 
 TEST(OptionalString, EmptyContructor) {
-    testEmptyContruction<Optional::OptString>();
+    testEmptyContruction<opt::OptString>();
 }
 
 TEST(OptionalString, NonEmptyContructorValidity) {
-    testNonEmptyContructorValidity<Optional::OptString>("Foo");
+    testNonEmptyContructorValidity<opt::OptString>("Foo");
 }
 
 TEST(OptionalString, NonEmptyContructorValidityStdString) {
     std::string foo = "Foo";
-    testNonEmptyContructorValidity<Optional::OptString>(foo);
+    testNonEmptyContructorValidity<opt::OptString>(foo);
 }
 
 TEST(OptionalString, NonEmptyContructorValue) {
-    testNonEmptyContructorValue<Optional::OptString>("A big sentence");
+    testNonEmptyContructorValue<opt::OptString>("A big sentence");
 }
 
 TEST(OptionalString, NonEmptyContructorValueStdString) {
     std::string foo = "A big sentence";
-    testNonEmptyContructorValue<Optional::OptString>(foo);
+    testNonEmptyContructorValue<opt::OptString>(foo);
 }
 
 TEST(OptionalString, SettingValueValidity) {
-    testSettingValueValidity<Optional::OptString>("Bar");
+    testSettingValueValidity<opt::OptString>("Bar");
 }
 
 TEST(OptionalString, SettingValueValidityStdString) {
     std::string bar = "Bar";
-    testSettingValueValidity<Optional::OptString>(bar);
+    testSettingValueValidity<opt::OptString>(bar);
 }
 
 TEST(OptionalString, SettingValue) {
-    testSettingValue<Optional::OptString>("An ever bigger sentence");
+    testSettingValue<opt::OptString>("An ever bigger sentence");
 }
 
 TEST(OptionalString, SettingValueStdString) {
     std::string bar = "An ever bigger sentence";
-    testSettingValue<Optional::OptString>(bar);
+    testSettingValue<opt::OptString>(bar);
 }
 
 TEST(OptionalString, Invalidate) {
-    testInvalidate<Optional::OptString>("1");
+    testInvalidate<opt::OptString>("1");
 }

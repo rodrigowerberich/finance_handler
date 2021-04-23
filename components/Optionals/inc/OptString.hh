@@ -4,7 +4,7 @@
 
 #include <string>
 
-namespace Optional{
+namespace opt{
 
 using OptString = OptionalBasicType<std::string>;
 

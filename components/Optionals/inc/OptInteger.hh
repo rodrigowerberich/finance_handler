@@ -2,7 +2,7 @@
 
 #include "OptionalBasicTypeTemplate.hh"
 
-namespace Optional{
+namespace opt{
 
 using OptInteger = OptionalBasicType<int>;
 

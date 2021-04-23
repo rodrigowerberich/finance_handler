@@ -4,26 +4,26 @@
 #include "OptInteger.hh"
 
 TEST(OptionalInteger, EmptyContructor) {
-    testEmptyContruction<Optional::OptInteger>();
+    testEmptyContruction<opt::OptInteger>();
 }
 
 TEST(OptionalInteger, NonEmptyContructorValidity) {
-    testNonEmptyContructorValidity<Optional::OptInteger>(23);
+    testNonEmptyContructorValidity<opt::OptInteger>(23);
 }
 
 TEST(OptionalInteger, NonEmptyContructorValue) {
-    testNonEmptyContructorValue<Optional::OptInteger>(1000);
+    testNonEmptyContructorValue<opt::OptInteger>(1000);
 }
 
 TEST(OptionalInteger, SettingValueValidity) {
-    testSettingValueValidity<Optional::OptInteger>(-375);
+    testSettingValueValidity<opt::OptInteger>(-375);
 }
 
 TEST(OptionalInteger, SettingValue) {
-    testSettingValue<Optional::OptInteger>(-1521);
+    testSettingValue<opt::OptInteger>(-1521);
 }
 
 TEST(OptionalInteger, Invalidate) {
-    testInvalidate<Optional::OptInteger>(10);
+    testInvalidate<opt::OptInteger>(10);
 }
 

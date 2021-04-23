@@ -1,8 +1,8 @@
 #pragma once
 
-namespace Optional{
+namespace opt{
 
-    class OptionalI{
+    class Optional{
         virtual bool isValid() const = 0;
         virtual void invalidate() = 0;
     };
