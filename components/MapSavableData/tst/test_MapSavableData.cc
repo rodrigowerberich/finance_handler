@@ -3,6 +3,7 @@
 #include "gtest/gtest.h"
 
 #include "WritableMappedData.hh"
+#include "MapSavableObject.hh"
 
 #include <utility>
 
@@ -98,60 +99,50 @@ private:
 
 };
 
-TEST(WritableMappedData, setInteger) {
-    auto mock = WritableMappedDataMock{};
-    auto expectedValue = std::make_pair(INT_KEY, TEST_INT);
-    auto numCallsBefore = mock.addIntegerCallCount();
-    auto added = mock.addInteger(INT_KEY, TEST_INT);
 
-    auto numCallsAfter = mock.addIntegerCallCount();
+class PersonData: public msd::MapSavableObject{
+public:
+    PersonData(const std::string& name, int age, double weight):
+    m_name{name}, m_age{age}, m_weight{weight}{}
+    virtual bool convert(msd::WritableMappedData& mappedData) const{
+        mappedData.addString(STR_KEY, m_name);
+        mappedData.addInteger(INT_KEY, m_age);
+        mappedData.addDouble(DOUBLE_KEY, m_weight);
+        return true;
+    }
+private:
+    std::string m_name;
+    int m_age;
+    double m_weight;
+};
+
+TEST(MapSavableObject, convert) {
+    auto mockWMD = WritableMappedDataMock{};
+    auto personData = PersonData{TEST_STR, TEST_INT, TEST_DOUBLE};
+
+
+    auto intExpectedValue = std::make_pair(INT_KEY, TEST_INT);
+    auto doubleExpectedValue = std::make_pair(DOUBLE_KEY, TEST_DOUBLE);
     
-    ASSERT_TRUE(added);
-    ASSERT_EQ(expectedValue, mock.getInteger());
-    ASSERT_EQ(numCallsBefore+1,numCallsAfter);
-}
+    auto intNumCallsBefore = mockWMD.addIntegerCallCount();
+    auto doubleNumCallsBefore = mockWMD.addDoubleCallCount();
+    auto stringNumCallsBefore = mockWMD.addStringCopyCallCount();
 
-TEST(WritableMappedData, setDouble) {
-    auto mock = WritableMappedDataMock{};
-    auto expectedValue = std::make_pair(DOUBLE_KEY, TEST_DOUBLE);
-    auto numCallsBefore = mock.addDoubleCallCount();
 
-    auto added = mock.addDouble(DOUBLE_KEY, TEST_DOUBLE);
+    personData.convert(mockWMD);
+
+    auto intNumCallsAfter = mockWMD.addIntegerCallCount();
+    auto doubleNumCallsAfter = mockWMD.addDoubleCallCount();
+    auto stringNumCallsAfter = mockWMD.addStringCopyCallCount();
     
-    auto numCallsAfter = mock.addDoubleCallCount();
-    ASSERT_TRUE(added);
-    ASSERT_EQ(expectedValue, mock.getDouble());
-    ASSERT_EQ(numCallsBefore+1,numCallsAfter);
+    ASSERT_EQ(intExpectedValue, mockWMD.getInteger());
+    ASSERT_EQ(doubleExpectedValue, mockWMD.getDouble());
+
+    auto pairStringResult = mockWMD.getString();
+    ASSERT_EQ(STR_KEY, std::get<0>(pairStringResult));
+    ASSERT_EQ(TEST_STR, std::get<1>(pairStringResult));
+
+    ASSERT_EQ(intNumCallsBefore+1,intNumCallsAfter);
+    ASSERT_EQ(doubleNumCallsBefore+1,doubleNumCallsAfter);
+    ASSERT_EQ(stringNumCallsBefore+1,stringNumCallsAfter);
 }
-
-TEST(WritableMappedData, setStringCopy) {
-    auto mock = WritableMappedDataMock{};
-    auto expectedValue = std::make_pair(STR_KEY, TEST_STR);
-    auto numCallsBefore = mock.addStringCopyCallCount();
-
-    auto added = mock.addString(STR_KEY, TEST_STR);
-    
-    auto numCallsAfter = mock.addStringCopyCallCount();
-    ASSERT_TRUE(added);
-    auto strPair = mock.getString();
-    ASSERT_EQ(std::get<0>(expectedValue), std::get<0>(strPair));
-    ASSERT_EQ(std::get<1>(expectedValue), std::get<1>(strPair));
-    ASSERT_EQ(numCallsBefore+1,numCallsAfter);
-}
-
-TEST(WritableMappedData, setStringMove) {
-    auto mock = WritableMappedDataMock{};
-    auto expectedValue = std::make_pair(STR_KEY, TEST_STR);
-    auto numCallsBefore = mock.addStringMoveCallCount();
-
-    auto added = mock.addString(STR_KEY, "Hello world!");
-    
-    auto numCallsAfter = mock.addStringMoveCallCount();
-    ASSERT_TRUE(added);
-    auto strPair = mock.getString();
-    ASSERT_EQ(std::get<0>(expectedValue), std::get<0>(strPair));
-    ASSERT_EQ(std::get<1>(expectedValue), std::get<1>(strPair));
-    ASSERT_EQ(numCallsBefore+1, numCallsAfter);
-}
-
-
