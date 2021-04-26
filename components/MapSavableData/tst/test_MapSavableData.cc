@@ -105,9 +105,9 @@ public:
     PersonData(const std::string& name, int age, double weight):
     m_name{name}, m_age{age}, m_weight{weight}{}
     virtual bool convert(msd::WritableMappedData& mappedData) const{
-        mappedData.addString(STR_KEY, m_name);
-        mappedData.addInteger(INT_KEY, m_age);
-        mappedData.addDouble(DOUBLE_KEY, m_weight);
+        mappedData.add(STR_KEY, m_name);
+        mappedData.add(INT_KEY, m_age);
+        mappedData.add(DOUBLE_KEY, m_weight);
         return true;
     }
 private:
