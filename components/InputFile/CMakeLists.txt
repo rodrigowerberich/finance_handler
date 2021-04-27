@@ -1,0 +1,14 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10)
+
+
+ADD_LIBRARY(InputFile 
+    STATIC
+    src/InputTransactionFile.cc
+)
+
+TARGET_INCLUDE_DIRECTORIES(InputFile
+    PUBLIC
+        inc
+)
+
+ADD_SUBDIRECTORY(tst)
