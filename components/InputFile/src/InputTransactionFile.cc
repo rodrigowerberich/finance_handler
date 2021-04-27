@@ -1,4 +1,4 @@
-#include "InputTransactionFile.hh"
+#include "InputTransactionFileImpl.hh"
 
 namespace ipfi{
 

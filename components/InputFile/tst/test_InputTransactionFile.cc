@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "InputTransactionFile.hh"
+#include "InputTransactionFileImpl.hh"
 #include <string>
 
 static int TEST_INT = 5;

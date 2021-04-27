@@ -6,3 +6,5 @@ ADD_SUBDIRECTORY(Optionals)
 ADD_SUBDIRECTORY(InputFile)
 
 ADD_SUBDIRECTORY(MapSavableData)
+
+ADD_SUBDIRECTORY(ParsedFilesStorage)
