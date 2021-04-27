@@ -10,4 +10,10 @@ TARGET_INCLUDE_DIRECTORIES(ParsedFilesStorage
         inc
 )
 
-# ADD_SUBDIRECTORY(tst)
+TARGET_LINK_LIBRARIES(ParsedFilesStorage 
+    INTERFACE 
+        InputFile
+        MapSavableData
+)
+
+ADD_SUBDIRECTORY(tst)
