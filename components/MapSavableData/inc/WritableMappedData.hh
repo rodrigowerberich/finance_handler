@@ -13,19 +13,19 @@ public:
     virtual bool addString(Key key, const std::string& value) = 0;
     virtual bool addString(Key key, std::string&& value) = 0;
 
-    bool add(Key key, int value){
+    virtual bool add(Key key, int value){
         return addInteger(key, value);
     }
 
-    bool add(Key key, double value){
+    virtual bool add(Key key, double value){
         return addDouble(key, value);
     }
 
-    bool add(Key key, const std::string& value){
+    virtual bool add(Key key, const std::string& value){
         return addString(key, value);
     }
 
-    bool add(Key key, std::string&& value){
+    virtual bool add(Key key, std::string&& value){
         return addString(key, std::move(value));
     }
 };
