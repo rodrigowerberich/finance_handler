@@ -18,7 +18,7 @@ TEST(ReadableParsedFile, getInputType) {
     
     ipfi::InputType originalInputType = 2;
 
-    ON_CALL(readableParsedFile, getInputType).WillByDefault(Return(originalInputType));
+    EXPECT_CALL(readableParsedFile, getInputType).Times(1).WillRepeatedly(Return(originalInputType));
     
     auto inputType = readableParsedFile.getInputType();
     
@@ -30,7 +30,7 @@ TEST(ReadableParsedFile, getInteger) {
     
     auto originalOptInteger = opt::OptInteger{2};
 
-    ON_CALL(readableParsedFile, getInteger(5)).WillByDefault(Return(originalOptInteger));
+    EXPECT_CALL(readableParsedFile, getInteger(5)).Times(1).WillRepeatedly(Return(originalOptInteger));
     
     auto optInteger = readableParsedFile.getInteger(5);
 
@@ -44,7 +44,7 @@ TEST(ReadableParsedFile, getIntegerFailed) {
     
     auto invalidOptInteger = opt::OptInteger{};
 
-    ON_CALL(readableParsedFile, getInteger(6)).WillByDefault(Return(invalidOptInteger));
+    EXPECT_CALL(readableParsedFile, getInteger(6)).Times(1).WillRepeatedly(Return(invalidOptInteger));
     
     auto optInteger = readableParsedFile.getInteger(6);
 
@@ -56,7 +56,7 @@ TEST(ReadableParsedFile, getDouble) {
     
     auto originalOptDouble = opt::OptDouble{2.0};
 
-    ON_CALL(readableParsedFile, getDouble(5)).WillByDefault(Return(originalOptDouble));
+    EXPECT_CALL(readableParsedFile, getDouble(5)).Times(1).WillRepeatedly(Return(originalOptDouble));
     
     auto optDouble = readableParsedFile.getDouble(5);
 
@@ -70,7 +70,7 @@ TEST(ReadableParsedFile, getDoubleFailed) {
     
     auto invalidOptDouble = opt::OptDouble{};
 
-    ON_CALL(readableParsedFile, getDouble(6)).WillByDefault(Return(invalidOptDouble));
+    EXPECT_CALL(readableParsedFile, getDouble(6)).Times(1).WillRepeatedly(Return(invalidOptDouble));
     
     auto optDouble = readableParsedFile.getDouble(6);
 
@@ -82,7 +82,7 @@ TEST(ReadableParsedFile, getString) {
     
     auto originalOptString = opt::OptString{"Hi!"};
 
-    ON_CALL(readableParsedFile, getString(5)).WillByDefault(Return(originalOptString));
+    EXPECT_CALL(readableParsedFile, getString(5)).Times(1).WillRepeatedly(Return(originalOptString));
     
     auto optString = readableParsedFile.getString(5);
 
@@ -96,7 +96,7 @@ TEST(ReadableParsedFile, getStringFailed) {
     
     auto invalidOptString = opt::OptString{};
 
-    ON_CALL(readableParsedFile, getString(6)).WillByDefault(Return(invalidOptString));
+    EXPECT_CALL(readableParsedFile, getString(6)).Times(1).WillRepeatedly(Return(invalidOptString));
     
     auto optString = readableParsedFile.getString(6);
 

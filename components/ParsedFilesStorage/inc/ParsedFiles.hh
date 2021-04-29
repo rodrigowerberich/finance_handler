@@ -6,7 +6,7 @@
 
 namespace pfs{
 
-class ReadableParsedFile {
+class ParsedFiles {
 public:
     virtual bool store(const SavableParsedFile& parsedFile) const = 0;
     virtual const ReadableParsedFile& load(const ParsedFileReference& reference) const = 0;

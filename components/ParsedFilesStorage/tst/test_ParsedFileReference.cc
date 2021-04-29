@@ -16,7 +16,7 @@ TEST(ParsedFileReference, getId) {
     
     int originalId = 1;
 
-    ON_CALL(parsedFileReference, getId).WillByDefault(Return(originalId));
+    EXPECT_CALL(parsedFileReference, getId).Times(1).WillRepeatedly(Return(originalId));
     
     auto id = parsedFileReference.getId();
     
@@ -28,7 +28,7 @@ TEST(ParsedFileReference, getInputType) {
     
     ipfi::InputType originalInputType = 2;
 
-    ON_CALL(parsedFileReference, getInputType).WillByDefault(Return(originalInputType));
+    EXPECT_CALL(parsedFileReference, getInputType).Times(1).WillRepeatedly(Return(originalInputType));
     
     auto inputType = parsedFileReference.getInputType();
     
