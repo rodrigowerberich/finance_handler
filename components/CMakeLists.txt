@@ -8,3 +8,4 @@ ADD_SUBDIRECTORY(InputFile)
 ADD_SUBDIRECTORY(MapSavableData)
 
 ADD_SUBDIRECTORY(ParsedFilesStorage)
+ADD_SUBDIRECTORY(ParserRegistry)
