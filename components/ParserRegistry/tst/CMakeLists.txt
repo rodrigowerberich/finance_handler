@@ -2,6 +2,7 @@ ADD_EXECUTABLE(ParserRegistry_tst
     main.cc
     test_InputTransactionParser.cc
     test_InputTransactionParserGenerator.cc
+    test_ParserRegistry.cc
 )
 
 ADD_TEST(NAME ParserRegistry_tst COMMAND ParserRegistry_tst)
